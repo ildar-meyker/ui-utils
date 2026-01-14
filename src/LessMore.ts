@@ -7,29 +7,29 @@ export class LessMore {
   private btnEl: HTMLElement;
   private listEl: HTMLElement;
   private options: Required<ILessMoreOptions>;
-  private initializedClass = "lessmore-initialized";
+  private initializedClass = 'lessmore-initialized';
 
   constructor(btnEl: HTMLAnchorElement, options: ILessMoreOptions = {}) {
     if (!btnEl) {
-      throw new Error("LessMore: btnEl is required");
+      throw new Error('LessMore: btnEl is required');
     }
 
     this.btnEl = btnEl;
 
     this.options = {
-      btnOpenedClass: "opened",
-      listOpenedClass: "opened",
+      btnOpenedClass: 'opened',
+      listOpenedClass: 'opened',
       ...options,
     };
 
     const listSelector = btnEl.hash || btnEl.dataset.target;
     if (!listSelector) {
-      throw new Error("LessMore: btn has not list selector");
+      throw new Error('LessMore: btn has not list selector');
     }
 
     const listEl = document.querySelector<HTMLElement>(listSelector);
     if (!listEl) {
-      throw new Error("LessMore: listEl not found");
+      throw new Error('LessMore: listEl not found');
     }
 
     this.listEl = listEl;
@@ -48,7 +48,7 @@ export class LessMore {
   private init(): void {
     this.btnEl.classList.add(this.initializedClass);
 
-    this.btnEl.addEventListener("click", this.handleButtonClick);
+    this.btnEl.addEventListener('click', this.handleButtonClick);
   }
 
   // Обработчик клика
@@ -86,7 +86,7 @@ export class LessMore {
   // Удалить экземпляр и обработчик
   public destroy(): void {
     this.btnEl.classList.remove(this.initializedClass);
-    this.btnEl.removeEventListener("click", this.handleButtonClick);
+    this.btnEl.removeEventListener('click', this.handleButtonClick);
     delete (this.btnEl as any)._lessmoreInstance;
   }
 }

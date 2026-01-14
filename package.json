@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "husky": "^9.1.7",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   }

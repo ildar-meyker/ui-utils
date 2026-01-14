@@ -43,17 +43,22 @@ export class Tabs {
         this.rootEl.addEventListener('click', this.handleBtnClick);
     }
     setActiveBtn(btnEl) {
-        const { delegateActiveClassToButtonParent: delegateClass } = this.options;
-        this.rootEl.querySelectorAll(this.options.btnSelector).forEach((item) => {
-            const usedItem = delegateClass ? item.parentElement : item;
-            usedItem?.classList.remove(this.options.btnActiveClass);
+        const { btnSelector, btnActiveClass, delegateActiveClassToButtonParent: delegateClass, } = this.options;
+        // remove all active classes
+        this.rootEl.querySelectorAll(btnSelector).forEach((siblingEl) => {
+            const targetEl = delegateClass ? siblingEl.parentElement : siblingEl;
+            targetEl?.classList.remove(btnActiveClass);
         });
-        const usedBtn = delegateClass ? btnEl.parentElement : btnEl;
-        usedBtn?.classList.add(this.options.btnActiveClass);
+        // set active class for current
+        const targetEl = delegateClass ? btnEl.parentElement : btnEl;
+        targetEl?.classList.add(btnActiveClass);
     }
     setActiveBlock(blockEl) {
-        Array.from(blockEl.parentElement.children).forEach((siblingEl) => siblingEl.classList.remove(this.options.blockActiveClass));
-        blockEl.classList.add(this.options.blockActiveClass);
+        const { blockActiveClass } = this.options;
+        // remove all active classes
+        Array.from(blockEl.parentElement.children).forEach((siblingEl) => siblingEl.classList.remove(blockActiveClass));
+        // set active class for current
+        blockEl.classList.add(blockActiveClass);
     }
     static getInstance(rootEl) {
         return rootEl._tabsInstance;

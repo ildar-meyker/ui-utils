@@ -13,7 +13,7 @@ export class Tabs {
 
   constructor(rootEl: HTMLElement, options: ITabsOptions = {}) {
     if (!rootEl) {
-      throw new Error('Tabs: rootEl element is required');
+      throw new Error('Tabs: rootEl element is required. Test');
     }
 
     this.rootEl = rootEl;

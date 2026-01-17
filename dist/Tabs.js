@@ -20,7 +20,7 @@ export class Tabs {
             this.options.onSelected(btnEl);
         };
         if (!rootEl) {
-            throw new Error('Tabs: rootEl element is required');
+            throw new Error('Tabs: rootEl element is required. Test');
         }
         this.rootEl = rootEl;
         this.options = {
